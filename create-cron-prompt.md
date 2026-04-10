@@ -74,5 +74,6 @@ Compose a short confirmation:
 
 Remove the files that are not needed anymore
 
+- [ ] .git
 - [ ] README.md
 - [ ] create-cron-prompt.md

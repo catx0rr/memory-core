@@ -235,6 +235,7 @@ def main():
 
     if not ws.exists():
         print(json.dumps({
+            'ok': False,
             'error': f'Workspace not found: {args.workspace}',
             'timestamp': now,
         }))
@@ -258,6 +259,7 @@ def main():
             and result['memory_md'].get('evidence_in_tail', False))
     )
     result['sweep_appears_active'] = has_recent_evidence
+    result['ok'] = True
 
     print(json.dumps(result, indent=2, ensure_ascii=False))
     return 0

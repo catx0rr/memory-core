@@ -54,9 +54,14 @@ memory-core dreaming (3:00 AM)
 
 ```
 memory-core/                        # Skill root (install location varies)
-├── memory-core-prompt.md           # Recurring monitor (runs via cron)
-├── create-cron-prompt.md           # One-time baseline check + cron creation
+├── SKILL.md                        # Runtime contract
+├── INSTALL.md                      # Operator installation guide
+├── SETUP.md                        # Agent first-time setup guide
 ├── README.md                       # This file
+├── LICENSE
+├── runtime/
+│   ├── create-cron-prompt.md       # One-time baseline check + cron creation
+│   └── memory-core-prompt.md       # Recurring monitor (runs via cron)
 └── scripts/
     ├── check_evidence.py           # Scan dreaming evidence surfaces
     └── memory_state.py             # Count MEMORY.md metrics
@@ -101,13 +106,13 @@ All file scanning, counting, and date math is handled by deterministic Python sc
 
 **First-time setup:**
 
-Tell the agent: *"Read `create-cron-prompt.md` in the memory-core skill directory and follow every step."*
+Tell the agent: *"Read `SETUP.md` in the memory-core skill directory and follow every step."*
 
 This runs the baseline check and creates the recurring `memory-core-status` cron (daily at 3:30 AM, 30 minutes after the built-in sweep). The cron payload uses the resolved absolute path — no hardcoded skill path.
 
 **Manual check:**
 
-Tell the agent: *"Read `memory-core-prompt.md` in the memory-core skill and follow every step."*
+Tell the agent: *"Read `runtime/memory-core-prompt.md` in the memory-core skill and follow every step."*
 
 ---
 

@@ -2,7 +2,7 @@
 
 Read USER.md to determine user's language. All output in that language.
 Working directory: the workspace root.
-Resolve the absolute path of this prompt's parent directory and use it as `SKILL_ROOT`.
+This file lives inside `runtime/`. Resolve the absolute path of the parent of `runtime/` and use it as `SKILL_ROOT`.
 
 **Hybrid rule:** Scripts handle all file scanning, counting, and date math. LLM interprets results and composes the report.
 

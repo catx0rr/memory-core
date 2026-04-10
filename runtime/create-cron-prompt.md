@@ -2,7 +2,7 @@
 
 Read USER.md to determine user's language. All output in that language.
 Working directory: the workspace root.
-Resolve the absolute path of this prompt's parent directory and use it as `SKILL_ROOT`.
+This file lives inside `runtime/`. Resolve the absolute path of the parent of `runtime/` and use it as `SKILL_ROOT`.
 
 **Run once after enabling built-in memory-core dreaming.**
 **This prompt verifies the baseline, then creates the recurring monitoring cron.**
@@ -51,13 +51,19 @@ Create a cron with the following parameters:
 | delivery | `announce` |
 | timeoutSeconds | `120` |
 
-The cron payload message must be:
+Resolve the absolute path to the recurring prompt:
+
+    PROMPT_PATH = <resolved absolute path to $SKILL_ROOT/runtime/memory-core-prompt.md>
+
+This must be a fully resolved absolute path — no `~`, no `$SKILL_ROOT`, no placeholders.
+
+The cron payload message must be (using the resolved path, not variables):
 
     Run memory-core dream status check.
-    Read SKILL_ROOT/memory-core-prompt.md and follow every step strictly.
+    Read <PROMPT_PATH> and follow every step strictly.
     Working directory: the workspace root
 
-Replace `SKILL_ROOT` in the payload with the actual absolute path resolved at the top of this prompt.
+Do NOT leave `SKILL_ROOT` or any placeholder literal in the created cron payload.
 
 ---
 
@@ -76,4 +82,4 @@ Remove the files that are not needed anymore
 
 - [ ] .git
 - [ ] README.md
-- [ ] create-cron-prompt.md
+- [ ] runtime/create-cron-prompt.md

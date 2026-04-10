@@ -29,6 +29,7 @@ def count_state(memory_path: str) -> dict:
 
     if not path.exists():
         return {
+            'ok': False,
             'timestamp': now,
             'error': f'MEMORY.md not found: {memory_path}',
             'exists': False,
@@ -73,6 +74,7 @@ def count_state(memory_path: str) -> dict:
     section_breakdown = {k: v for k, v in section_items.items() if v > 0}
 
     return {
+        'ok': True,
         'timestamp': now,
         'exists': True,
         'path': memory_path,
